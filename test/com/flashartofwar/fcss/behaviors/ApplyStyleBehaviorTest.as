@@ -162,12 +162,12 @@ class DummyClass extends Sprite implements IApplyStyleBehavior
         return styleBehavior.getPseudoSelector(state);
     }
 
-    public function get z():Number
+    public override function get z():Number
     {
         return _z;
     }
 
-    public function set z(value:Number):void
+    public override function set z(value:Number):void
     {
         _z = value;
     }
