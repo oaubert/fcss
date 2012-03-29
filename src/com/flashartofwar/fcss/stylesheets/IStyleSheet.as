@@ -47,7 +47,7 @@ package com.flashartofwar.fcss.stylesheets
 
         function newStyle(name:String, style:IStyle):void;
 
-        function getStyle(... styleName):IStyle;
+        function getStyle(styleNames: Array):IStyle;
 
         function hasStyle(name:String):Boolean;
 

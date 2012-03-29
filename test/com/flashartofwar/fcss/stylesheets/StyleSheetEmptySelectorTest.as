@@ -19,7 +19,7 @@ package com.flashartofwar.fcss.stylesheets
         public function testForEmptyStyle():void
         {
             collection.parseCSS(cssText);
-            var style:IStyle = collection.getStyle("DummyClass", "#dummyClassB", "bla");
+            var style:IStyle = collection.getStyle(["DummyClass", "#dummyClassB", "bla"]);
             Assert.assertEquals(style.styleName, "#dummyClassB");
         }
 

@@ -127,23 +127,20 @@ package com.flashartofwar.fcss.stylesheets
             indexCSS(this.cssText);
 
             // Force @variables to cache
-            var style:IStyle = getStyle("@variables");
+            var style:IStyle = getStyle(["@variables"]);
 
             return this;
         }
 
         /**
-         * <p>This looks up a style and returns an object. To help support style
-         * inheritance you can also pass in an comma delimited string and have
-         * the list merged into one style based on the order of the list. The
-         * first item being lower all the way up to the last in the list.</p>
-         *
+         * <p>This looks up a style and returns an object.</p>
          * @param styleName
          * @return
          *
          */
-        public function getStyle(... styleNames):IStyle
+        public function getStyle(styleNames: Array):IStyle
         {
+            // 
             // Split styles and get the total related classes
             var total:Number = styleNames.length;
             var baseProperties:IStyle = createEmptyStyle();
@@ -215,7 +212,7 @@ package com.flashartofwar.fcss.stylesheets
                 {
                     if ((hasStyle(styleNames[i]) && (styleNames[i] is String)))
                     {
-                        tempCSSText += getStyle(styleNames[i]).toString();
+                        tempCSSText += getStyle([ styleNames[i] ]).toString();
                     }
                 }
                 // Strip classes from a styles
@@ -430,7 +427,7 @@ package com.flashartofwar.fcss.stylesheets
             if (cachedstyles["@variables"])
             {
                 // If we have a cached variable style run it through the replacer
-                cssText = replaceVaribales(cssText, cachedstyles["@variables"]);
+                cssText = replaceVariables(cssText, cachedstyles["@variables"]);
             }
             // End - Test for Variables
             var tempObject:IStyle = createEmptyStyle();
@@ -509,7 +506,7 @@ package com.flashartofwar.fcss.stylesheets
          * @return
          *
          */
-        protected function replaceVaribales(text:String, paramObj:Object):String
+        protected function replaceVariables(text:String, paramObj:Object):String
         {
             return text.replace(CSS_VAR_PATTERN, function():*
             {

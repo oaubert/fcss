@@ -80,7 +80,7 @@ package com.flashartofwar.fcss.factories
         {
             var textField:TextField = new TextField();
 
-            var style:IStyle = _styleSheet.getStyle("." + className, "#" + id);
+            var style:IStyle = _styleSheet.getStyle(["." + className, "#" + id]);
 
             _applicator.applyStyle(textField, style);
 

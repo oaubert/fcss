@@ -168,7 +168,7 @@ package com.flashartofwar.fcss.stylesheets
         {
             addStyleSheet(styleSheetB, "sheetB");
             removeStyleSheet("sheetB");
-            var style:IStyle = getStyle("baseStyle");
+            var style:IStyle = getStyle(["baseStyle"]);
             var expected:String = "baseStyle{styleName:baseStyle;x:10;y:10;width:100;height:100;padding:5;margin:10;}"
             Assert.assertEquals(style.toString(), expected);
         }
@@ -178,7 +178,7 @@ package com.flashartofwar.fcss.stylesheets
         {
             addStyleSheet(styleSheetB, "sheetB");
             removeStyleSheet("sheetA");
-            var style:IStyle = getStyle("baseStyle");
+            var style:IStyle = getStyle(["baseStyle"]);
             var expected:String = "baseStyle{styleName:baseStyle;x:300px;height:150px;margin:0;}"
             Assert.assertEquals(style.toString(), expected);
         }
@@ -187,7 +187,7 @@ package com.flashartofwar.fcss.stylesheets
         public function testLocalStyleInheritanceSheetB():void
         {
             addStyleSheet(styleSheetB, "sheetB");
-            var style:IStyle = getStyle("#thickBorder");
+            var style:IStyle = getStyle(["#thickBorder"]);
             var expected:String = "#thickBorder{styleName:#thickBorder;x:0;y:10;width:100;height:150px;padding:5;margin:0;border:10px solid green;}";
             Assert.assertEquals(style.toString(), expected);
         }

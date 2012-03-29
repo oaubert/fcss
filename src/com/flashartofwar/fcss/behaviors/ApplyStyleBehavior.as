@@ -140,7 +140,7 @@ package com.flashartofwar.fcss.behaviors
             }
             else
             {
-                style = _styleSheet.getStyle.apply(null, defaultStyleNames);
+                style = _styleSheet.getStyle(defaultStyleNames);
             }
 
             if (style.styleName != CSSProperties.DEFAULT_STYLE_NAME)
@@ -252,7 +252,7 @@ package com.flashartofwar.fcss.behaviors
             }
             else
             {
-                tempStyle = _styleSheet.getStyle.apply(null, stateSelectorCache[state]);
+                tempStyle = _styleSheet.getStyle(stateSelectorCache[state]);
                 cachedProperties[selectorNamesID] = tempStyle;
             }
 

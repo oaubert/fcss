@@ -50,7 +50,7 @@ package com.flashartofwar.fcss.stylesheets
 
         public function testGetstyle():void
         {
-            var style:IStyle = sheet.getStyle("#playButton");
+            var style:IStyle = sheet.getStyle(["#playButton"]);
             var sampleTest:String = "#playButton{styleName:#playButton;background-color:#FFFFFF;background-image:url('/images/play_button_background.jpg');}";
             Assert.assertEquals(style.toString(), sampleTest);
         }
@@ -65,7 +65,7 @@ package com.flashartofwar.fcss.stylesheets
 
             sheet.newStyle("teststyle", prop);
 
-            Assert.assertEquals(sheet.getStyle("teststyle").toString(), prop.toString());
+            Assert.assertEquals(sheet.getStyle(["teststyle"]).toString(), prop.toString());
         }
 
         [Test]
@@ -92,7 +92,7 @@ package com.flashartofwar.fcss.stylesheets
         public function testSecondCSSParseStyle():void
         {
             praseSecondCSSSheet();
-            var style:IStyle = sheet.getStyle("baseStyle");
+            var style:IStyle = sheet.getStyle(["baseStyle"]);
             var sampleTest:String = "baseStyle{styleName:baseStyle;x:300;y:10;width:100px;height:150px;padding:5;margin:0;}";
             Assert.assertEquals(style.toString(), sampleTest);
         }
@@ -134,14 +134,14 @@ package com.flashartofwar.fcss.stylesheets
         public function testVaribleMerge():void
         {
             sheet.parseCSS(StyleSheetTextCSSData.cssTextB);
-            Assert.assertEquals(sheet.getStyle("@variables").toString(), "@variables{styleName:@variables;defaultColor:#333333;test2:FooBar;}");
+            Assert.assertEquals(sheet.getStyle(["@variables"]).toString(), "@variables{styleName:@variables;defaultColor:#333333;test2:FooBar;}");
         }
 
         [Test]
 
         public function testVariableReplace():void
         {
-            var style:IStyle = sheet.getStyle("#playButton:over");
+            var style:IStyle = sheet.getStyle(["#playButton:over"]);
             Assert.assertEquals(style.toString(), "#playButton:over{styleName:#playButton:over;background-color:#333333;background-image:url('/images/play_button_background.jpg');}");
         }
 
@@ -156,7 +156,7 @@ package com.flashartofwar.fcss.stylesheets
 
             for (i = 0; i < total; i ++)
             {
-                style = sheet.getStyle(sheet.styleNames[i]);
+                style = sheet.getStyle([sheet.styleNames[i]]);
             }
             Assert.assertEquals(sheet.styleNames.length, total);
         }
@@ -165,7 +165,7 @@ package com.flashartofwar.fcss.stylesheets
 
         public function testRetainCSSUnitInformation():void
         {
-            var style:Style = sheet.getStyle("baseStyle") as Style;
+            var style:Style = sheet.getStyle(["baseStyle"]) as Style;
             Assert.assertEquals(style.width, "100px");
         }
 
@@ -228,21 +228,21 @@ package com.flashartofwar.fcss.stylesheets
         [Test]
         public function testSingleMergeEmptyStyleDoesNotGetMerged():void
         {
-            var style:IStyle = sheet.getStyle("baseStyle", ".FooBar");
+            var style:IStyle = sheet.getStyle(["baseStyle", ".FooBar"]);
             Assert.assertEquals(style.styleName, "baseStyle");
         }
 
         [Test]
         public function testMergeEmptyStyleDoesNotGetMerged():void
         {
-            var style:IStyle = sheet.getStyle("baseStyle", "#playButton", ".FooBar");
+            var style:IStyle = sheet.getStyle(["baseStyle", "#playButton", ".FooBar"]);
             Assert.assertEquals(style.styleName, "#playButton");
         }
 
         [Test]
         public function testMergeEmptyPseudoSelectorDoesNotGetMerged():void
         {
-            var style:IStyle = sheet.getStyle("baseStyle", ".FooBar:up");
+            var style:IStyle = sheet.getStyle(["baseStyle", ".FooBar:up"]);
             Assert.assertEquals(style.styleName, "baseStyle");
         }
     }

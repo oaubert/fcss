@@ -44,7 +44,7 @@ package com.flashartofwar.fcss.behaviors
         [Test]
         public function testApplyStyle():void
         {
-            dummyClassA.applyStyle(collection.getStyle("#testStyle"));
+            dummyClassA.applyStyle(collection.getStyle(["#testStyle"]));
             Assert.assertEquals(dummyClassA.x, 350);
         }
 
@@ -99,7 +99,7 @@ package com.flashartofwar.fcss.behaviors
         [Test]
         public function testForEmptyStyle():void
         {
-            var style:IStyle = collection.getStyle("DummyClass", "#dummyClassB", "bla");
+            var style:IStyle = collection.getStyle(["DummyClass", "#dummyClassB", "bla"]);
             Assert.assertEquals(style.styleName, "#dummyClassB");
         }
 

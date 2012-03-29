@@ -112,7 +112,7 @@ package com.flashartofwar.fcss.stylesheets
          * @return
          *
          */
-        public function getStyle(... styleNames):IStyle
+        public function getStyle(styleNames: Array):IStyle
         {
             var baseStyle:IStyle = createEmptyStyle();
             var styleName:String;
